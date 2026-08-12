@@ -1,0 +1,113 @@
+/* ---------------------------------------------------------------------------
+   Design tokens.
+
+   Light is the base. Dark is redefined twice: once behind prefers-color-scheme
+   (guarded so an explicit light choice still wins) and once behind the
+   data-theme stamp, so the toggle wins in both directions. No component colour
+   is ever declared inside a media or [data-theme] block.
+
+   The categorical and status palettes were checked with the dataviz validator
+   (OKLCH lightness band, chroma floor, CVD separation, contrast) in both modes.
+--------------------------------------------------------------------------- */
+:root {
+  --bg: #eef1f4;
+  --surface: #fbfcfd;
+  --surface-2: #e7ecf1;
+  --ink: #15202a;
+  --ink-2: #4a5a66;
+  --ink-3: #6e7f8b;
+  --rule: #d3dbe2;
+  --rule-firm: #b9c5cf;
+  --accent: #1a6fa8;
+  --second: #b5701a;
+  --good: #1b7f5a;
+  --warn: #b58212;
+  --crit: #b32d45;
+  --track: #dbe2e8;
+  --shadow: 0 1px 2px rgba(21, 32, 42, 0.06), 0 8px 24px -16px rgba(21, 32, 42, 0.28);
+
+  /* Georgia is deliberately absent: it has no precomposed Vietnamese glyphs, so
+     the browser falls back per-mark and diacritics render detached. */
+  --serif: Cambria, Constantia, "Palatino Linotype", "Times New Roman", serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e151a;
+    --surface: #141d23;
+    --surface-2: #1a242b;
+    --ink: #e4ebf0;
+    --ink-2: #9fb0bc;
+    --ink-3: #74858f;
+    --rule: #25333c;
+    --rule-firm: #35454f;
+    --accent: #4e9bcb;
+    --second: #b8842f;
+    --good: #2f9a6e;
+    --warn: #b58c2b;
+    --crit: #c0414e;
+    --track: #222e36;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px -16px rgba(0, 0, 0, 0.8);
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #0e151a;
+  --surface: #141d23;
+  --surface-2: #1a242b;
+  --ink: #e4ebf0;
+  --ink-2: #9fb0bc;
+  --ink-3: #74858f;
+  --rule: #25333c;
+  --rule-firm: #35454f;
+  --accent: #4e9bcb;
+  --second: #b8842f;
+  --good: #2f9a6e;
+  --warn: #b58c2b;
+  --crit: #c0414e;
+  --track: #222e36;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px -16px rgba(0, 0, 0, 0.8);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+code,
+kbd {
+  font-family: var(--mono);
+  font-size: 0.92em;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
