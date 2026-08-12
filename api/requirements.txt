@@ -1,0 +1,3 @@
+# Demo API only. The lab deliverables in requirements.txt do not depend on these.
+fastapi>=0.115.0,<1.0.0
+uvicorn[standard]>=0.30.0,<1.0.0

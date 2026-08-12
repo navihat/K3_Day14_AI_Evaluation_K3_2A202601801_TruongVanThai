@@ -5,3 +5,7 @@ __pycache__/
 .venv/
 .env
 .DS_Store
+
+# demo frontend
+node_modules/
+frontend/dist/
